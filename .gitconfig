@@ -1,0 +1,18 @@
+[user]
+	name = calebcordry
+	email = ccordry@google.com
+
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	sync = !sh -c 'git checkout master && git pull upstream master && git push'
+	syncback = !sh -c 'git sync && git checkout -'
+	presubmit = !sh -c 'git syncback && git rebase master'
+	sshow = "!f() { git stash show stash^{/$*} -p; }; f"
+	sapply = "!f() { git stash apply stash^{/$*}; }; f"
+	pr = !sh -c 'git fetch upstream pull/$1/head:pr-$1 && git co pr-$1' -
+	# gbpurge = !sh -c 'git branch --merged | grep -v "\*" | grep -v "master" | xargs -n 1 git branch -d'
+
