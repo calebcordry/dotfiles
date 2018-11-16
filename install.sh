@@ -10,6 +10,7 @@ realpath() {
 Names=(
   ".gitconfig" 
   ".gitmodules" 
+  ".tmux.conf"
   ".vim" 
   ".vimrc" 
   ".zshrc"

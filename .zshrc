@@ -108,4 +108,6 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Enable fzf fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Explicitly declare terminal so that tmux is happy
+export TERM=xterm-256color
 
