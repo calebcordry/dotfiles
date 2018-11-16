@@ -107,6 +107,14 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Enable fzf fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Setting fd as the default source for fzf
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# Setting fd for ** completion
+_fzf_compgen_path() {
+  fd --type f . "$1"
+}
+
 
 # Explicitly declare terminal so that tmux is happy
 export TERM=xterm-256color

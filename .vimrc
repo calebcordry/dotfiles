@@ -23,6 +23,9 @@ syntax enable
 let g:gruvbox_italic=1
 colorscheme gruvbox
 
+" Enable italicized comments
+highlight Comment cterm=italic
+
 " ----------------------------------------------------------------------------
 " Caleb's quick settings to be sorted when I learn more.
 " ----------------------------------------------------------------------------
