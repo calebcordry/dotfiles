@@ -1,6 +1,6 @@
 "
 " Maintainer:	Caleb Cordry <caleb.cordry@gmail.com>
-" Last change:	2018 October 
+" Last change:	2018 November
 "
 " ----------------------------------------------------------------------------
 "   .vimrc                                                                {{{
@@ -58,4 +58,27 @@ set history=200		" keep 200 lines of command line history
 set showcmd		    " display incomplete commands
 set wildmenu		  " display completion matches in a status line
 set cursorline    " highlight the current line.
+
+" FZF Key mappings
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>h :History<CR>
+
+nmap <Leader>t :BTags<CR>
+nmap <Leader>T :Tags<CR>
+
+nmap <Leader>l :BLines<CR>
+nmap <Leader>L :Lines<CR>
+nmap <Leader>' :Marks<CR>
+
+nmap <Leader>a :Ag<Space>
+
+nmap <Leader>H :Helptags!<CR>
+nmap <Leader>C :Commands<CR>
+
+nmap <Leader>: :History:<CR>
+nmap <Leader>/ :History/<CR>
+
+nmap <Leader>M :Maps<CR>
+
+nmap <Leader>s :Filetypes<CR>
 
