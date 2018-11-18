@@ -64,7 +64,6 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
@@ -85,8 +84,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Start of custom configuration
+alias vimconfig="vim ~/.vimrc"
 
 # nvm setup
 export NVM_DIR="$HOME/.nvm"
@@ -108,14 +106,17 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Enable fzf fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Setting fd as the default source for fzf
-export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Setting fd for ** completion
 _fzf_compgen_path() {
-  fd --type f . "$1"
+  fd --hidden --follow --exclude ".git" . "$1"
 }
 
-
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
 # Explicitly declare terminal so that tmux is happy
 export TERM=xterm-256color
 
