@@ -25,3 +25,7 @@ for f in "${Names[@]}"; do
     echo "linking $DOTFILES/$f to $HOME"
     ln -fsh "$DOTFILES/$f" "$HOME"
 done
+
+# Link fzf binary so that it's available to vim
+# (fzf should already be installed)
+ln -fsh /usr/local/opt/fzf "$HOME/.vim/pack/default/start"
