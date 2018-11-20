@@ -28,4 +28,8 @@ done
 
 # Link fzf binary so that it's available to vim
 # (fzf should already be installed)
+echo "linking fzf binary to vim packages"
 ln -fsh /usr/local/opt/fzf "$HOME/.vim/pack/default/start"
+
+echo "DONE"
+

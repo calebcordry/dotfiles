@@ -46,7 +46,7 @@ set tabstop=2 shiftwidth=2 expandtab
 set backspace=indent,eol,start
 
 " Don't wrap lines.
-" set wrap!
+set wrap!
 
 " Enable status bar.
 set laststatus=2
@@ -60,6 +60,9 @@ set wildmenu		  " display completion matches in a status line
 set cursorline    " highlight the current line.
 
 " FZF Key mappings
+nmap <Leader>f :GFiles<CR>
+nmap <Leader>F :Files<CR>
+
 nmap <Leader>b :Buffers<CR>
 nmap <Leader>h :History<CR>
 
@@ -81,4 +84,11 @@ nmap <Leader>/ :History/<CR>
 nmap <Leader>M :Maps<CR>
 
 nmap <Leader>s :Filetypes<CR>
+
+" ALE 
+let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\  '*': ['remove_trailing_lines', 'trim_whitespace'],
+\}
 
