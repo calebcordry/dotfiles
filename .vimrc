@@ -58,6 +58,9 @@ set history=200		" keep 200 lines of command line history
 set showcmd		    " display incomplete commands
 set wildmenu		  " display completion matches in a status line
 set cursorline    " highlight the current line.
+set ignorecase    " ignore case for searching
+set smartcase     " case sensitive search if capital letters are present
+set autoread      " reload file when changes detected
 
 " FZF Key mappings
 nmap <Leader>f :GFiles<CR>
@@ -74,6 +77,7 @@ nmap <Leader>L :Lines<CR>
 nmap <Leader>' :Marks<CR>
 
 nmap <Leader>a :Ag<Space>
+nmap <Leader>r :Rg<Space>
 
 nmap <Leader>H :Helptags!<CR>
 nmap <Leader>C :Commands<CR>
@@ -89,6 +93,6 @@ nmap <Leader>s :Filetypes<CR>
 let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
-\  '*': ['remove_trailing_lines', 'trim_whitespace'],
+\  '*': ['trim_whitespace'],
 \}
 
