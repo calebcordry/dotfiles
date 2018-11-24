@@ -6,11 +6,9 @@
 "   .vimrc                                                                {{{
 " ----------------------------------------------------------------------------
 
-" TODO(CC): recompile with +clipboard and +termguicolors
 " Allow vim to break compatibility with vi.
 set nocompatible " This must be first, because it changes other options.
-set termguicolors " Enable truecolors, this is not actually doing anything 
-" as default mac vim is compiled -clipboard. 
+set termguicolors " Enable truecolors TODO(cc): work out color kinks
 
 " ----------------------------------------------------------------------------
 "   Theme Settings.                                                       {{{
@@ -18,7 +16,7 @@ set termguicolors " Enable truecolors, this is not actually doing anything
 
 " Enable syntax highlighting.
 syntax enable
-    
+
 " Set colorscheme.
 let g:gruvbox_italic=1
 colorscheme gruvbox
@@ -27,7 +25,7 @@ colorscheme gruvbox
 highlight Comment cterm=italic
 
 " ----------------------------------------------------------------------------
-" Caleb's quick settings to be sorted when I learn more.
+" Quick settings to be sorted when I learn more.
 " ----------------------------------------------------------------------------
 
 " Enable incremental searching.
@@ -65,34 +63,33 @@ set autoread      " reload file when changes detected
 " FZF Key mappings
 nmap <Leader>f :GFiles<CR>
 nmap <Leader>F :Files<CR>
-
 nmap <Leader>b :Buffers<CR>
 nmap <Leader>h :History<CR>
-
 nmap <Leader>t :BTags<CR>
 nmap <Leader>T :Tags<CR>
-
 nmap <Leader>l :BLines<CR>
 nmap <Leader>L :Lines<CR>
 nmap <Leader>' :Marks<CR>
-
 nmap <Leader>a :Ag<Space>
 nmap <Leader>r :Rg<Space>
-
 nmap <Leader>H :Helptags!<CR>
 nmap <Leader>C :Commands<CR>
-
 nmap <Leader>: :History:<CR>
 nmap <Leader>/ :History/<CR>
-
 nmap <Leader>M :Maps<CR>
-
 nmap <Leader>s :Filetypes<CR>
 
-" ALE 
+" ALE
 let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
-\  '*': ['trim_whitespace'],
+\  '*': ['trim_whitespace']
 \}
 
+" Put these lines at the very end of your vimrc file.
+" Load all plugins now.
+" Plugins need to be added to runtimepath before helptags can be generated.
+packloadall
+" Load all of the helptags now, after plugins have been loaded.
+" All messages and errors will be ignored.
+silent! helptags ALL

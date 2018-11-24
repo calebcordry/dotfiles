@@ -85,6 +85,7 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vimconfig="vim ~/.vimrc"
+alias reload="source $HOME/.zshrc"
 
 # nvm setup
 export NVM_DIR="$HOME/.nvm"
@@ -112,11 +113,11 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" . "$1"
 }
-
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
+
 # Explicitly declare terminal so that tmux is happy
-export TERM=xterm-256color
+# export TERM=xterm-256color
 
