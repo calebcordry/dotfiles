@@ -5,12 +5,12 @@
 " ----------------------------------------------------------------------------
 "   .vimrc                                                                {{{
 " ----------------------------------------------------------------------------
-
-" TODO(CC): recompile with +clipboard and +termguicolors
+"TODO(cc): figure out if I actually need the following 2 lines
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 " Allow vim to break compatibility with vi.
 set nocompatible " This must be first, because it changes other options.
-set termguicolors " Enable truecolors, this is not actually doing anything 
-" as default mac vim is compiled -clipboard. 
+set termguicolors " Enable truecolors, this is not actually doing anything
 
 " ----------------------------------------------------------------------------
 "   Theme Settings.                                                       {{{
@@ -18,7 +18,7 @@ set termguicolors " Enable truecolors, this is not actually doing anything
 
 " Enable syntax highlighting.
 syntax enable
-    
+
 " Set colorscheme.
 let g:gruvbox_italic=1
 colorscheme gruvbox
@@ -54,13 +54,15 @@ set laststatus=2
 " Use wombat colorscheme for lifeline.
 " let g:lightline = {'colorscheme': 'wombat'}
 
-set history=200		" keep 200 lines of command line history
-set showcmd		    " display incomplete commands
-set wildmenu		  " display completion matches in a status line
-set cursorline    " highlight the current line.
-set ignorecase    " ignore case for searching
-set smartcase     " case sensitive search if capital letters are present
-set autoread      " reload file when changes detected
+set history=200		    " keep 200 lines of command line history
+set showcmd		        " display incomplete commands
+set wildmenu		      " display completion matches in a status line
+set cursorline        " highlight the current line.
+set ignorecase        " ignore case for searching
+set smartcase         " case sensitive search if capital letters are present
+set autoread          " reload file when changes detected
+set directory=~/tmp   " save all swap files in one place
+set hidden            " allow buffers to be hidden
 
 " FZF Key mappings
 nmap <Leader>f :GFiles<CR>
@@ -89,7 +91,7 @@ nmap <Leader>M :Maps<CR>
 
 nmap <Leader>s :Filetypes<CR>
 
-" ALE 
+" ALE
 let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
