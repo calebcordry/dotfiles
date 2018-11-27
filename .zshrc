@@ -101,7 +101,8 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOBIN:$GOROOT/bin
 
 # Use vim bindings on commmand line
-bindkey -v
+# bindkey -v
+set -o vi
 
 # Turn on syntax highlighting for zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -119,3 +120,6 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
+
+export FZF_TMUX=1
+export FZF_TMUX_HEIGHT=20
