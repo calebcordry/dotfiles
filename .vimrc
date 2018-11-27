@@ -87,9 +87,9 @@ nmap <Leader>s :Filetypes<CR>
 " ALE
 hi link ALEErrorSign    GruvboxRed
 hi link ALEWarningSign  GruvboxYellow
-let g:ale_completion_enabled = 1
 let g:ale_sign_error = "◉"
 let g:ale_sign_warning = "◉"
+let g:ale_completion_enabled = 1
 let g:ale_linters = {'javascript': ['tsserver', 'eslint']}
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
@@ -99,6 +99,11 @@ noremap <Leader>ad :ALEGoToDefinition<CR>
 noremap <Leader>af :ALEFix<CR>
 noremap <Leader>ar :ALEFindReferences<CR>
 
+autocmd FileType JAVASCRIPT nmap <buffer> <C-]> :ALEGoToDefinition<CR>
+map - ddp
+map _ dd2kp
+imap <c-u> <esc>lviwUi
+
 " Put these lines at the very end of your vimrc file.
 " Load all plugins now.
 " Plugins need to be added to runtimepath before helptags can be generated.
@@ -106,9 +111,3 @@ packloadall
 " Load all of the helptags now, after plugins have been loaded.
 " All messages and errors will be ignored.
 silent! helptags ALL
-
-" autocmd FileType JAVASCRIPT nmap <buffer> <C-]> :YcmCompleter GoTo<CR>
-echom ">^.^<"
-map - ddp
-map _ dd2kp
-imap <c-u> <esc>lviwUi
