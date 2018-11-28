@@ -103,19 +103,28 @@ let g:fzf_colors =
 " ALE
 hi link ALEErrorSign    GruvboxRed
 hi link ALEWarningSign  GruvboxYellow
+
 let g:ale_sign_error = "◉"
 let g:ale_sign_warning = "◉"
-let g:ale_completion_enabled = 1
 let g:ale_linters = {'javascript': ['tsserver', 'eslint']}
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \  '*': ['remove_trailing_lines', 'trim_whitespace']
 \}
+
 noremap <Leader>ad :ALEGoToDefinition<CR>
 noremap <Leader>af :ALEFix<CR>
 noremap <Leader>ar :ALEFindReferences<CR>
 
 autocmd FileType JAVASCRIPT nmap <buffer> <C-]> :ALEGoToDefinition<CR>
+nmap ]a <Plug>(ale_next_wrap)
+nmap [a <Plug>(ale_previous_wrap)
+
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+" learn
 map - ddp
 map _ dd2kp
 imap <c-u> <esc>lviwUi
@@ -127,3 +136,16 @@ packloadall
 " Load all of the helptags now, after plugins have been loaded.
 " All messages and errors will be ignored.
 silent! helptags ALL
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
