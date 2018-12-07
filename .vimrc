@@ -137,6 +137,10 @@ noremap Z :update<CR>
 " Random mappings
 noremap <Leader>s :update<CR>
 
+let maplocalleader = "\\"
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
 " Put these lines at the very end of your vimrc file.
 " Load all plugins now.
 " Plugins need to be added to runtimepath before helptags can be generated.
