@@ -21,10 +21,14 @@ syntax enable
 
 " Set colorscheme.
 let g:gruvbox_italic=1
+let g:gruvbox_contrast_dark="hard"
 colorscheme gruvbox
 
 " Enable italicized comments
 highlight Comment cterm=italic
+
+" Change color of search results
+" hi Search guibg=LightBlue
 
 " ----------------------------------------------------------------------------
 " Quick settings to be sorted when I learn more.
@@ -125,9 +129,13 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 " learn
-map - ddp
-map _ dd2kp
-imap <c-u> <esc>lviwUi
+noremap - ddp
+noremap _ dd2kp
+inoremap <c-u> <esc>lviwUi
+noremap Z :update<CR>
+
+" Random mappings
+noremap <Leader>s :update<CR>
 
 " Put these lines at the very end of your vimrc file.
 " Load all plugins now.
