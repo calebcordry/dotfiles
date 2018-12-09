@@ -4,13 +4,13 @@
 " ----------------------------------------------------------------------------
 "   .vimrc                                                                {{{
 " ----------------------------------------------------------------------------
+" Allow vim to break compatibility with vi.
 set nocompatible " This must be first, because it changes other options.
+set termguicolors
 
 "TODO(cc): figure out if I actually need the following 2 lines
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-" Allow vim to break compatibility with vi.
-set termguicolors " Enable truecolors TODO(cc): work out color kinks
 
 " ----------------------------------------------------------------------------
 "   Theme Settings.                                                       {{{
@@ -121,25 +121,30 @@ noremap <Leader>af :ALEFix<CR>
 noremap <Leader>ar :ALEFindReferences<CR>
 
 autocmd FileType JAVASCRIPT nmap <buffer> <C-]> :ALEGoToDefinition<CR>
-nmap ]a <Plug>(ale_next_wrap)
-nmap [a <Plug>(ale_previous_wrap)
+nnoremap ]a <Plug>(ale_next_wrap)
+nnoremap [a <Plug>(ale_previous_wrap)
 
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-" learn
+" learning vimscript
+" Move current line up
 noremap - ddp
-noremap _ dd2kp
+" Move current line down
+noremap _ ddkP
+" Uppercase word in visual mode
 inoremap <c-u> <esc>lviwUi
-noremap Z :update<CR>
-
-" Random mappings
+" Save
 noremap <Leader>s :update<CR>
+" noremap zz :update<CR>
 
 let maplocalleader = "\\"
+" Easy vimrc editing
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+" Surround word with quotes
+vnoremap <leader>" <esc>`<i"<esc>`>la"<esc>
 
 " Put these lines at the very end of your vimrc file.
 " Load all plugins now.
