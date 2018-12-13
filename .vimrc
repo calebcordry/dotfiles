@@ -58,16 +58,23 @@ set laststatus=2
 " Use wombat colorscheme for lifeline.
 " let g:lightline = {'colorscheme': 'wombat'}
 
-set history=200		    " keep 200 lines of command line history
-set showcmd		        " display incomplete commands
-set wildmenu		      " display completion matches in a status line
-set cursorline        " highlight the current line.
-set ignorecase        " ignore case for searching
-set smartcase         " case sensitive search if capital letters are present
-set autoread          " reload file when changes detected
-set directory=~/tmp   " save all swap files in one place
-set hidden            " allow buffers to be hidden
-set shiftround        " round indent to multiples of shiftwidth
+set history=200               " keep 200 lines of command line history
+set showcmd                   " display incomplete commands
+set wildmenu                  " display completion matches in a status line
+set wildmode=list:longest     " complete until longest match and list possibilities
+set cursorline                " highlight the current line.
+set ignorecase                " ignore case for searching
+set smartcase                 " case sensitive search if capital letters are present
+set autoread                  " reload file when changes detected
+set directory=~/tmp           " save all swap files in one place
+set hidden                    " allow buffers to be hidden
+set shiftround                " round indent to multiples of shiftwidth
+set scrolloff=3               " keep a few lines on screen before cursor
+set autoindent                " smart indentation
+set ttyfast                   " faster redrawing
+set showmatch                 " briefly show matching char
+set gdefault                  " replace globally
+set noswapfile                " annoying
 
 " FZF Key mappings
 nmap <Leader>f :GFiles<CR>
@@ -86,7 +93,7 @@ nmap <Leader>C :Commands<CR>
 nmap <Leader>: :History:<CR>
 nmap <Leader>/ :History/<CR>
 nmap <Leader>M :Maps<CR>
-nmap <Leader>s :Filetypes<CR>
+" nmap <Leader>s :Filetypes<CR>
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
