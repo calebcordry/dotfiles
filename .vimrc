@@ -71,6 +71,7 @@ set ttyfast                   " faster redrawing
 set showmatch                 " briefly show matching char
 set gdefault                  " replace globally
 set noswapfile                " annoying
+set ttimeoutlen=50            " make switching modes faster
 
 " FZF Key mappings
 nmap <Leader>f :GFiles<CR>
@@ -141,6 +142,11 @@ inoremap <c-u> <esc>lviwUi
 " Save
 noremap <Leader>s :update<CR>
 " noremap zz :update<CR>
+" make window switching easier
+nnoremap <silent> <C-h> :wincmd h<CR>
+nnoremap <silent> <C-j> :wincmd j<CR>
+nnoremap <silent> <C-k> :wincmd k<CR>
+nnoremap <silent> <C-l> :wincmd l<CR>
 
 let maplocalleader = "\\"
 " Easy vimrc editing
