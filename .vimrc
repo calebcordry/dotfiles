@@ -6,15 +6,15 @@
 " ----------------------------------------------------------------------------
 " Allow vim to break compatibility with vi.
 set nocompatible " This must be first, because it changes other options.
-set termguicolors
-
-"TODO(cc): figure out if I actually need the following 2 lines
-let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 
 " ----------------------------------------------------------------------------
 "   Theme Settings.                                                       {{{
 " ----------------------------------------------------------------------------
+set termguicolors
+
+" Some sort of hack to enable truecolor
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 
 " Enable syntax highlighting.
 syntax enable
@@ -49,15 +49,11 @@ set tabstop=2 shiftwidth=2 expandtab
 " Allow backspacing over everything in insert mode.
 set backspace=indent,eol,start
 
-" Don't wrap lines.
-set wrap!
-
-" Enable status bar.
-set laststatus=2
-
 " Use wombat colorscheme for lifeline.
 " let g:lightline = {'colorscheme': 'wombat'}
 
+set wrap!                     " Don't wrap lines.
+set laststatus=2              " Enable status bar.
 set history=200               " keep 200 lines of command line history
 set showcmd                   " display incomplete commands
 set wildmenu                  " display completion matches in a status line
@@ -152,6 +148,13 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 " Surround word with quotes
 vnoremap <leader>" <esc>`<i"<esc>`>la"<esc>
+
+" Vimscript file settings {{{
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
 
 " Put these lines at the very end of your vimrc file.
 " Load all plugins now.
