@@ -2,13 +2,13 @@
 " Last change:	2018 November
 "
 " ----------------------------------------------------------------------------
-"   .vimrc                                                                {{{
+"   .vimrc
 " ----------------------------------------------------------------------------
 " Allow vim to break compatibility with vi.
 set nocompatible " This must be first, because it changes other options.
 
 " ----------------------------------------------------------------------------
-"   Theme Settings.                                                       {{{
+"   Theme Settings
 " ----------------------------------------------------------------------------
 set termguicolors
 
@@ -18,6 +18,9 @@ let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 
 " Enable syntax highlighting.
 syntax enable
+
+" Filetype detection.
+filetype plugin indent on
 
 " Set colorscheme.
 let g:gruvbox_italic=1
@@ -30,27 +33,20 @@ highlight Comment cterm=italic
 " Change color of search results
 " hi Search guibg=LightBlue
 
-" ----------------------------------------------------------------------------
-" Quick settings to be sorted when I learn more.
-" ----------------------------------------------------------------------------
-
-" Enable incremental searching.
-set incsearch hlsearch
-
-" Add relative numbers to gutter.
-set number relativenumber
-
-" Filetype detection.
-filetype plugin indent on
-
-" Expand tabs into two spaces.
-set tabstop=2 shiftwidth=2 expandtab
-
-" Allow backspacing over everything in insert mode.
-set backspace=indent,eol,start
-
 " Use wombat colorscheme for lifeline.
 " let g:lightline = {'colorscheme': 'wombat'}
+
+" ----------------------------------------------------------------------------
+"   Basic Settings
+" ----------------------------------------------------------------------------
+" Enable incremental searching.
+set incsearch hlsearch
+" Add relative numbers to gutter.
+set number relativenumber
+" Expand tabs into two spaces.
+set tabstop=2 shiftwidth=2 expandtab
+" Allow backspacing over everything in insert mode.
+set backspace=indent,eol,start
 
 set wrap!                     " Don't wrap lines.
 set laststatus=2              " Enable status bar.
@@ -73,6 +69,55 @@ set gdefault                  " replace globally
 set noswapfile                " annoying
 set ttimeoutlen=50            " make switching modes faster
 
+" ----------------------------------------------------------------------------
+"   Mappings
+" ----------------------------------------------------------------------------
+" Move current line up
+noremap - ddp
+" Move current line down
+noremap _ ddkP
+" Uppercase word in visual mode
+inoremap <c-u> <esc>lviwUi
+" Save
+noremap <Leader>s :update<CR>
+" Make window switching easier
+nnoremap <silent> <C-h> :wincmd h<CR>
+nnoremap <silent> <C-j> :wincmd j<CR>
+nnoremap <silent> <C-k> :wincmd k<CR>
+nnoremap <silent> <C-l> :wincmd l<CR>
+" Toggle comments
+noremap <silent> <leader>c :Commentary<CR>
+
+let maplocalleader = "\\"
+" Easy vimrc editing
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+" Surround word with quotes
+vnoremap <leader>" <esc>`<i"<esc>`>la"<esc>
+" Turn off highlight
+nnoremap <leader>h :nohl<CR>
+
+" ----------------------------------------------------------------------------
+"   Auto Commands
+" ----------------------------------------------------------------------------
+" Vimscript file settings {{{
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+
+" ----------------------------------------------------------------------------
+" Quickfix
+"  ----------------------------------------------------------------------------
+nnoremap ]q :cnext<cr>zz
+nnoremap [q :cprev<cr>zz
+nnoremap ]l :lnext<cr>zz
+nnoremap [l :lprev<cr>zz
+
+" ----------------------------------------------------------------------------
+"   FZF Settings
+" ----------------------------------------------------------------------------
 " FZF Key mappings
 nmap <Leader>f :GFiles<CR>
 nmap <Leader>F :Files<CR>
@@ -108,12 +153,26 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-" ALE
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+"   \ call fzf#vim#ag(<q-args>,
+"   \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+"   \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+"   \                 <bang>0)
+
+" ----------------------------------------------------------------------------
+"   ALE Settings
+" ----------------------------------------------------------------------------
 hi link ALEErrorSign    GruvboxRed
 hi link ALEWarningSign  GruvboxYellow
 
-let g:ale_sign_error = "◉"
-let g:ale_sign_warning = "◉"
+let g:ale_sign_error = '•'
+let g:ale_sign_warning = '•'
 let g:ale_linters = {'javascript': ['tsserver', 'eslint']}
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
@@ -132,53 +191,9 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-" learning vimscript
-" Move current line up
-noremap - ddp
-" Move current line down
-noremap _ ddkP
-" Uppercase word in visual mode
-inoremap <c-u> <esc>lviwUi
-" Save
-noremap <Leader>s :update<CR>
-" noremap zz :update<CR>
-" make window switching easier
-nnoremap <silent> <C-h> :wincmd h<CR>
-nnoremap <silent> <C-j> :wincmd j<CR>
-nnoremap <silent> <C-k> :wincmd k<CR>
-nnoremap <silent> <C-l> :wincmd l<CR>
-
-let maplocalleader = "\\"
-" Easy vimrc editing
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-" Surround word with quotes
-vnoremap <leader>" <esc>`<i"<esc>`>la"<esc>
-
-" Vimscript file settings {{{
-augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-augroup END
-" }}}
-
-" Put these lines at the very end of your vimrc file.
-" Load all plugins now.
-" Plugins need to be added to runtimepath before helptags can be generated.
-packloadall
-" Load all of the helptags now, after plugins have been loaded.
-" All messages and errors will be ignored.
+" ----------------------------------------------------------------------------
+"   End
+" ----------------------------------------------------------------------------
+" Keep this at end of file
+" Load all helptags after all plugins have been loaded
 silent! helptags ALL
-
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-
-command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>,
-  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \                 <bang>0)
