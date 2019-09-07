@@ -94,12 +94,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Golang configuration
-export GOPATH=$HOME/go
-export GOBIN=$GOPATH/bin
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOBIN:$GOROOT/bin
-
 # Use vim bindings on commmand line
 # bindkey -v
 set -o vi
@@ -123,3 +117,8 @@ _fzf_compgen_dir() {
 
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT=20
+export VSCODE_TOKEN="dcy65zfdjdfvjry45metw7jbngphxjcbjxpuiabkuk7kizwq26iq"
+
+# Install z https://github.com/rupa/z
+. /Users/calebcordry/dotfiles/z.sh
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
