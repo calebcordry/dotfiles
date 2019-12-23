@@ -83,16 +83,12 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vimconfig="vim ~/.vimrc"
 alias reload="source ~/.zshrc"
 alias edot="vim  ~/dotfiles"
 alias gs="git status"
 alias ga="git add"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Use vim bindings on commmand line
 # bindkey -v
@@ -101,11 +97,14 @@ set -o vi
 # Turn on syntax highlighting for zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# FZF
 # Enable fzf fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Setting fd as the default source for fzf
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --no-ignore --ignore-file=.gitignore'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 # Setting fd for ** completion
 _fzf_compgen_path() {
   fd --hidden --follow --exclude ".git" . "$1"
@@ -117,8 +116,9 @@ _fzf_compgen_dir() {
 
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT=20
-export VSCODE_TOKEN="dcy65zfdjdfvjry45metw7jbngphxjcbjxpuiabkuk7kizwq26iq"
+
+# VSCODE
+export VSCODE_TOKEN=""
 
 # Install z https://github.com/rupa/z
 . /Users/calebcordry/dotfiles/z.sh
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

@@ -33,3 +33,10 @@ ln -fsh /usr/local/opt/fzf "$HOME/.vim/pack/default/start"
 
 echo "DONE"
 
+# Need to figure out a place for these
+  # install homebrew
+  # brew install 
+    # fzf $(brew --prefix)/opt/fzf/install
+    # rg
+    # bat
+  # vim plugins
