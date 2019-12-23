@@ -94,8 +94,9 @@ alias ga="git add"
 # bindkey -v
 set -o vi
 
+# TODO figure out if I still want this...
 # Turn on syntax highlighting for zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # FZF
 # Enable fzf fuzzy finder
