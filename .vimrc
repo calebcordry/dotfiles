@@ -118,6 +118,9 @@ nnoremap [l :lprev<cr>zz
 " ----------------------------------------------------------------------------
 "   FZF Settings
 " ----------------------------------------------------------------------------
+" Enable fzf
+set rtp+=/usr/local/opt/fzf
+
 " FZF Key mappings
 nmap <Leader>f :GFiles<CR>
 nmap <Leader>F :Files<CR>
