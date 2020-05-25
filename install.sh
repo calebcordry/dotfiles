@@ -34,6 +34,7 @@ ln -fsh /usr/local/opt/fzf "$HOME/.vim/pack/default/start"
 echo "DONE"
 
 # Need to figure out a place for these
+#if mac
   # install homebrew
   # brew install 
     # fzf $(brew --prefix)/opt/fzf/install

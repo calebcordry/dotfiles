@@ -12,7 +12,7 @@ set nocompatible " This must be first, because it changes other options.
 " ----------------------------------------------------------------------------
 set termguicolors
 
-" Some sort of hack to enable truecolor
+" Necessary to allow truecolor in tmux
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 

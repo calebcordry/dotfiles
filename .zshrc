@@ -16,7 +16,7 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -94,10 +94,6 @@ alias ga="git add"
 # bindkey -v
 set -o vi
 
-# TODO figure out if I still want this...
-# Turn on syntax highlighting for zsh
-# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # FZF
 # Enable fzf fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -118,8 +114,13 @@ _fzf_compgen_dir() {
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT=20
 
-# VSCODE
+# VSCode developer token
 export VSCODE_TOKEN=""
 
 # Install z https://github.com/rupa/z
 . /Users/calebcordry/dotfiles/z.sh
+
+# Install volta package manager
+export VOLTA_HOME="/Users/calebcordry/.volta"
+grep --silent "$VOLTA_HOME/bin" <<< $PATH || export PATH="$VOLTA_HOME/bin:$PATH"
+export PATH="/usr/local/opt/opencv@2/bin:$PATH"
